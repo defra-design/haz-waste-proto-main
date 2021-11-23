@@ -1,0 +1,177 @@
+{% extends "../layout.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }} prototype
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Tell us about the consignment
+      </h1>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">1. </span> Consignment details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="where-picked-up" aria-describedby="where-is-the-waste">
+                  Where will the waste be picked up?
+                </a>
+              </span>
+              {% if data['where-is-the-waste'] == null or data['where-is-the-waste'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="where-is-the-waste">Not started</strong>
+              {% elif data['where-is-the-waste'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="where-is-the-waste">Completed</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="where-taken-to" aria-describedby="where-will-the-waste-be-taken">
+                  Where will the waste be taken?
+                </a>
+              </span>
+              {% if data['where-will-the-waste-be-taken'] == null or data['where-will-the-waste-be-taken'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="where-will-the-waste-be-taken">Not started</strong>
+              {% elif data['where-will-the-waste-be-taken'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="where-will-the-waste-be-taken">Completed</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Waste details
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="what-process" aria-describedby="what-process-gave-rise">
+                  What process gave rise to the waste?
+                </a>
+              </span>
+              {% if data['what-process-gave-rise'] == null or data['what-process-gave-rise'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="what-process-gave-rise">Not started</strong>
+              {% elif data['what-process-gave-rise'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="what-process-gave-rise">Completed</strong>
+              {% endif %}
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="ewc-code" aria-describedby="the-ewc-code">
+                  What is the EWC code?
+                </a>
+              </span>
+              {% if data['the-ewc-code'] == null or data['the-ewc-code'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="the-ewc-code">Not started</strong>
+              {% elif data['the-ewc-code'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="the-ewc-code">Completed</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span> Certificates
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="consignor-contact" aria-describedby="consignor-signed">
+                  Consignor
+                </a>
+              </span>
+              {% if data['consignor-signed'] == null or data['consignor-signed'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignor-signed">Not started</strong>
+              {% elif data['consignor-signed'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="consignor-signed">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="carrier-confirm-consignment" aria-describedby="confirmed-consignment-by-carrier">
+                  Carrier
+                </a>
+              </span>
+              {% if data['confirmed-consignment-by-carrier'] == null or data['confirmed-consignment-by-carrier'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="confirmed-consignment-by-carrier">Not started</strong>
+              {% elif data['confirmed-consignment-by-carrier'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="confirmed-consignment-by-carrier">Completed</strong>
+              {% endif %}
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="accept-consignment" aria-describedby="consignee-accept-consignment">
+                  Consignee
+                </a>
+              </span>
+              {% if data['consignee-accept-consignment'] == null or data['consignee-accept-consignment'] == 'Not started' %}
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="consignee-accept-consignment">Not started</strong>
+              {% elif data['consignee-accept-consignment'] == 'Completed' %}
+                <strong class="govuk-tag app-task-list__tag" id="consignee-accept-consignment">Completed</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+     <!--   <li>
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span> Submit and generate Annex VII
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              {% if data['person-arranging-the-shipment-status'] == "Completed" and 
+              data['importer-consignee-status'] == "Completed" and 
+              data['quantity-status'] == "Completed" and 
+              data['date-of-shipment-status'] == "Completed" and 
+              data['carrier-status'] == "Completed" and 
+              data['waste-generator-original-producer-new-producer-or-collector-status'] == "Completed" and 
+              data['recovery-facility-or-laboratory-status']  == "Completed" and 
+              data['recovery-operation-status'] == "Completed" and 
+              data['usual-description-of-the-waste-status'] == "Completed" and 
+              data['waste-identification-codes-status'] == "Completed" and 
+              data['countries-states-concerned-status'] == "Completed" and 
+              data['transaction-id-status'] == "Completed" %}
+                <span class="app-task-list__task-name">
+                  <a href="check-your-answers" aria-describedby="submit-and-generate-status">
+                    Check your answers
+                  </a>
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Not started</strong>
+              {% else %}
+                <span class="app-task-list__task-name">
+                  Check your answers
+                </span>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-and-generate-status">Cannot start yet</strong>
+              {% endif %}
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div> -->
+
+
